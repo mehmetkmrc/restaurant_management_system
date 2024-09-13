@@ -11,4 +11,12 @@ After userRouter.go, started to foodRouter.go file
 11. creating databaseConneciton.go file
 12. creating userController.go file (Just creating functions titles, not ingredients)
 13. creating foodController.go file (Just creating functions titles, not ingredients)
+14. creating invoiceController.go file (just creating function titles, not  ingredients)
+15. creating menuController.go file (just creeating function titles, not ingredients)
+16. orderController.go file (just creating function titles, not ingredients)
+17. tableController.go file (just creating function titles, not ingredients)
+18. orderItemsController.go file (just creating function titles, not ingredients)
+19.foodModel.go written
+20. invoiceModel.go written
+21. menuModel.go written
 
