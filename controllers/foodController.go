@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -21,6 +22,23 @@ var validate = validator.New()
 
 func GetAllFoods() gin.HandlerFunc{
 	return func(c *gin.Context){
+		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+
+		recordPerPage, err := strconv.Atoi("recordPerPage") //Bu fonksiyon verilen bir string ifadesini integer(tam sayı) türüne dönüştürmek için kullanılır.
+		if err != nil || recordPerPage < 1{
+			recordPerPage = 10
+		}
+		page, err := strconv.Atoi(c.Query("page"))
+		if err !=nil || page < 1 {
+			page = 1
+		}
+
+		startIndex := (page-1) * recordPerPage
+		startIndex, err = strconv.Atoi(c.Query("startIndex"))
+
+		matchStage := bson.D{{"$match", bson.D{{}}}}
+		groupStage := bson.D{{"$group", bson.D{{"_id", bson.D{{"_id", "null"}}}, {"total_count", bson.D{"$sum", 1}}}, }}
+		projectStage
 
 	}
 }
@@ -28,7 +46,7 @@ func GetAllFoods() gin.HandlerFunc{
 func GetFoodById() gin.HandlerFunc{
 	return func(c *gin.Context){
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
-		foodId := c.Param("food_id")
+		foodId := c.Param("food_id")//Burada Param metodunun kullanılmasının sebebi food_id url de dinamik bir parametreye karşılık geliyor
 		var food models.Food
 		err := foodCollection.FindOne(ctx, bson.M{"food_id": foodId}).Decode(&food) 
 		defer cancel()
@@ -60,8 +78,8 @@ func CreateFood() gin.HandlerFunc{
 			 c.JSON(http.StatusInternalServerError, gin.H{"error":msg})
 			 return 
 		}
-		food.Created_at, _ = time.Parse(time.RFC3339, time.Now()).Format(time.RFC3339)
-		food.Updated_at, _ = time.Parse(time.RFC1123, time.Now()).Format(time.RFC3339)
+		food.Created_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+		food.Updated_at, _ = time.Parse(time.RFC1123, time.Now().Format(time.RFC3339))
 		food.ID = primitive.NewObjectID()
 		food.Food_id = food.ID.Hex()
 		var num = toFixed(*food.Price, 2)

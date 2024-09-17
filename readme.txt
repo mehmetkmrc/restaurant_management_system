@@ -23,4 +23,8 @@ After userRouter.go, started to foodRouter.go file
 23. orderItemModel.go written
 24. userModel.go written
 25. noteModel.go written
+26.Started to foodController.go file. First did GetFoodById method. Later did CreateFood method. 
+26. Started to menuController.go file. On here, written GetAllMenus function. Later started to GetMenuById later CreateMenu() and last time on here updateMenu() so menuController.go complated here.
+27. Keep continue to foodControllerçgo and doing GetAllFoods() method.
+
 
