@@ -28,4 +28,8 @@ After userRouter.go, started to foodRouter.go file
 27. Keep continue to foodControllerçgo and doing GetAllFoods() method.
 28. doing GetAllFoods method's aggreagation part
 29. Doing UpdateFood method on foodController 
-
+30. Doing GetAllOrderes method on orderController.go
+31. Doing GetOrderById method on orderController.go
+32. Doing UpdateOrder on orderController.go
+33. Doing CreateOrder on orderController.go
+34. Doing OrderItemOrderCreator method on orderController.go
