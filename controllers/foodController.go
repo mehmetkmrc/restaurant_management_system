@@ -51,8 +51,7 @@ func GetAllFoods() gin.HandlerFunc{
 			}
 		}
 		result, err := foodCollection.Aggregate(ctx, mongo.Pipeline{
-			matchStage, groupStage, projectStage
-		})
+			matchStage, groupStage, projectStage})
 		defer cancel()
 		if err!=nil{
 			c.JSON(http.StatusInternalServerError, gin.H{"error":"error occured"})

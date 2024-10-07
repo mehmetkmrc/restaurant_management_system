@@ -33,3 +33,4 @@ After userRouter.go, started to foodRouter.go file
 32. Doing UpdateOrder on orderController.go
 33. Doing CreateOrder on orderController.go
 34. Doing OrderItemOrderCreator method on orderController.go
+35. Doing InvoiceViewFormat structure on invoiceController.go file
