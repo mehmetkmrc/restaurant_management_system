@@ -38,3 +38,11 @@ After userRouter.go, started to foodRouter.go file
 37. Doing UpdateInvoice method on invoiceController.go file
 38. Doing CreateInvoice method on invoiceController.go file
 39. Doing OrderItemPack method on orderItemsController.go file
+40. Doing GetAllOrders method on orderItemController.go file
+41. Doing GetOrderItem method on orderItemController.go file
+42. Doing CreateOrderItem method on orderItemController.go file
+43. Doing UpdateOrderItem method on orderItemController.go file
+44. Doing GetAllTables method on tableController.go file
+45. Doing GetTableById method on tableController.go file
+46. Doing CreateTable method on tableController.go file
+47. DOing UpdateTable method on tableController.go file
