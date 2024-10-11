@@ -36,20 +36,18 @@ func GetAllFoods() gin.HandlerFunc{
 			page = 1
 		}
 
-		startIndex := (page-1) * recordPerPage
+		startIndex := (page - 1) * recordPerPage
 		startIndex, err = strconv.Atoi(c.Query("startIndex"))
 
 		matchStage := bson.D{{"$match", bson.D{{}}}}
-		groupStage := bson.D{{"$group", bson.D{{"_id", bson.D{{"_id", "null"}}}, {"total_count", bson.D{"$sum", 1}}}, {"data", bson.D{{"$push", "$$ROOT"}}} }}
+		groupStage := bson.D{{"$group", bson.D{{"_id", bson.D{{"_id", "null"}}}, {"total_count", bson.D{{"$sum", 1}}}, {"data", bson.D{{"$push", "$$ROOT"}}}}}}
 		projectStage := bson.D{
 			{
 				"$project", bson.D{
 					{"_id", 0},
 					{"total_count", 1},
 					{"food_items", bson.D{{"$slice", []interface{}{"$data", startIndex, recordPerPage}}}},
-				}
-			}
-		}
+				}}}
 		result, err := foodCollection.Aggregate(ctx, mongo.Pipeline{
 			matchStage, groupStage, projectStage})
 		defer cancel()
@@ -121,7 +119,7 @@ func round(num float64) int {
 }
 
 func toFixed(num float64, precision int) float64 {
-	output := mat.Pow(10, float64(precision)),
+	output := math.Pow(10, float64(precision))
 	return float64(round(num*output)) / output
 }
 
@@ -132,7 +130,7 @@ func UpdateFood() gin.HandlerFunc{
 		var food models.Food
 
 
-		foodId := c.Params("food_id")
+		foodId := c.Param("food_id")
 
 		if err := c.BindJSON(&food); err != nil{
 			c.JSON(http.StatusBadRequest, gin.H{"error":err.Error()})
@@ -160,7 +158,7 @@ func UpdateFood() gin.HandlerFunc{
 				c.JSON(http.StatusInternalServerError, gin.H{"error":msg})
 				return
 			}
-			updateObj = append(updateObj, bson.E{"menu":food.Price})
+			updateObj = append(updateObj, bson.E{"menu", food.Price})
 		}
 
 		food.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
@@ -177,9 +175,7 @@ func UpdateFood() gin.HandlerFunc{
 			ctx,
 			filter,
 			bson.D{
-				{
-					"$set", updateObj
-				}
+					{"$set", updateObj},
 			},
 			&opt,
 		)

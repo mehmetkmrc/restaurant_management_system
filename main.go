@@ -2,15 +2,12 @@ package main
 
 import (
 	"os"
-
+	middleware "github.com/mehmetkmrc/restaurant_management_system/middleware"
 	"github.com/gin-gonic/gin"
-	"restaurant_management_system/routes"
-	"restaurant_management_system/database"
-	"restaurant_management_system/middleware"
-	"go.mongodb.org/mongo-driver/mongo"
+	"github.com/mehmetkmrc/restaurant_management_system/routes"
 )
 
-var foodCollection *mongo.foodCollection = database.OpenCollection(database.client, "food")
+
 
 func main(){
 	port := os.Getenv("PORT")

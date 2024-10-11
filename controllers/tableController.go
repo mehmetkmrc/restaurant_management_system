@@ -14,6 +14,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 
@@ -100,7 +101,41 @@ func UpdateTable() gin.HandlerFunc{
 			return 
 		}
 		var updateObj primitive.D
-		if table.Number_of_guests
-		if 
+		
+		if table.Number_of_guests != nil{
+			updateObj = append(updateObj, bson.E{"number_of_guests", table.Number_of_guests})
+		}
+		if table.Table_number != nil {
+			updateObj = append(updateObj, bson.E{"table_number", table.Table_number})
+		}
+
+
+		table.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+
+		upsert := true
+		opt := options.UpdateOptions{
+			Upsert: &upsert,
+		}
+
+		filter := bson.M{"table_id": tableId}
+
+		result, err := tableCollection.UpdateOne(
+			ctx,
+			filter,
+			bson.D{
+				{"$set", updateObj},
+			},
+			&opt,
+		)
+
+		if err != nil{
+			msg := fmt.Sprintf("table item update failed")
+			c.JSON(http.StatusInternalServerError, gin.H{"error":msg})
+			return 
+		}
+
+		defer cancel()
+		c.JSON(http.StatusOK, result)
+
 	}
 }
