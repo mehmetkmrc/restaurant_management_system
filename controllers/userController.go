@@ -1,6 +1,13 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/mehmetkmrc/restaurant_management_system/database"
+	"go.mongodb.org/mongo-driver/mongo"
+)
+
+
+var userCollection *mongo.Collection = database.OpenCollection(database.Client, "user")
 
 
 /*Burada GetUsers, GetUser, Login ve SignUp fonksiyonlarının return func(c *gin.Context) şeklinde bir return değer almasının sebebi Gin Framework'ünde HTTP isteklerini alıp ve cevap vermesi. Yani HTTP ile etkileşimde bulunurlar.
