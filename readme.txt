@@ -47,4 +47,7 @@ After userRouter.go, started to foodRouter.go file
 46. Doing CreateTable method on tableController.go file
 47. DOing UpdateTable method on tableController.go file
 48. Doing ItemsByOrder method on orderItemsController.go file
-49. Doing userCOntroller.go file
+49. Doing GetUsers method in userController.go file
+50. Doing GetUser method in userController.go file
+51. Doing SignUp method in userController.go file
+52. Doing HashPassword in userController.go file
