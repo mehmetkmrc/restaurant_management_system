@@ -51,3 +51,7 @@ After userRouter.go, started to foodRouter.go file
 50. Doing GetUser method in userController.go file
 51. Doing SignUp method in userController.go file
 52. Doing HashPassword in userController.go file
+53. Doing GenerateAllTokens method on tokenHelper.go
+54. Doing UpdateAllTokens method on tokenHelper.go
+55. Doing ValidateToken method on tokenHelper.go
+56. Doing Authentication method on authMiddleware.go file
