@@ -85,6 +85,7 @@ func CreateOrder() gin.HandlerFunc{
 		}
 		order.Created_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 		order.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+		
 
 		order.ID = primitive.NewObjectID()
 		order.Order_id = order.ID.Hex()
@@ -92,7 +93,7 @@ func CreateOrder() gin.HandlerFunc{
 		result, insertErr := orderCollection.InsertOne(ctx, order)
 
 		if insertErr != nil{
-			msg := fmt.Sprintf("order ştem was not created")
+			msg := fmt.Sprintf("order item was not created")
 			c.JSON(http.StatusInternalServerError, gin.H{"error":msg})
 			return
 		}
