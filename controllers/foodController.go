@@ -90,7 +90,7 @@ func CreateFood() gin.HandlerFunc{
 			c.JSON(http.StatusBadRequest, gin.H{"error": validationErr.Error()})
 			return  
 		}
-		err := menuCollection.FindOne(ctx, bson.M{"new_id":food.Menu_id}).Decode(&menu)
+		err := menuCollection.FindOne(ctx, bson.M{"menu_id":food.Menu_id}).Decode(&menu)
 		defer cancel()
 		if err != nil{
 			 msg := fmt.Sprintf("menu not found")
