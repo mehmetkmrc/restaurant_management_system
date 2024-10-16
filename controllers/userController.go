@@ -13,6 +13,7 @@ import (
 	"github.com/mehmetkmrc/restaurant_management_system/helpers"
 	"github.com/mehmetkmrc/restaurant_management_system/models"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -37,11 +38,11 @@ func GetUsers() gin.HandlerFunc {
 			page = 1
 		}
 
-		startIndex = (page-1)*recordPerPage
+		startIndex := (page-1)*recordPerPage
 		
-		startIndex, err := strconv.Atoi(c.Query("startIndex"))
+		startIndex, err = strconv.Atoi(c.Query("startIndex"))
 
-		matchStage := bson.D{"$match", bson.D{{}}}
+		matchStage := bson.D{{"$match", bson.D{{}}}}
 		projectStage := bson.D{
 			{"$project", bson.D{
 				{"_id", 0},
@@ -65,7 +66,7 @@ func GetUsers() gin.HandlerFunc {
 
 
 
-		Aggregate()
+		//Aggregate()
 
 		//either pass an error
 
@@ -100,8 +101,8 @@ func SignUp() gin.HandlerFunc{
 			c.JSON(http.StatusBadRequest, gin.H{"error":err.Error()})
 		}
 		//Validate the data based on user struct
-		validationError := validate.Struct(user)
-		validationErr != nil{
+		validationErr := validate.Struct(user)
+		if validationErr != nil{
 			c.JSON(http.StatusBadRequest, gin.H{"error":validationErr.Error()})
 			return
 		}
@@ -166,7 +167,6 @@ func Login() gin.HandlerFunc{
 		var user models.User
 		var foundUser models.User
 		//Convert the login data from POSTMAN which is in JSON to golang readable format
-
 		if err := c.BindJSON(&user); err != nil{
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
@@ -175,28 +175,22 @@ func Login() gin.HandlerFunc{
 		err := userCollection.FindOne(ctx, bson.M{"email": user.Email}).Decode(&foundUser)
 		defer cancel()
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error":"user not found, login seems to be incorrect"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "user not found, login seems to be incorrect"})
 			return
 		}
 		//Then you will verify the password
-
 		passwordIsValid, msg := VerifyPassword(*user.Password, *foundUser.Password)
 		defer cancel()
-		if passwordIsValid != nil{
+		if passwordIsValid != true{
 			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
 			return 
 		}
-
 		//If all goes well, then you'll generate tokens
-
-		token, refreshToken, _ := helpers.GenerateAllTokens(*foundUser.Email, *foundUser.First_name, *foundUser.Last_name)
-
+		token, refreshToken, _ := helpers.GenerateAllTokens(*foundUser.Email, *foundUser.First_name, *foundUser.Last_name, foundUser.User_id)
 		//Update tokens - token and refresh token
 		helpers.UpdateAllTokens(token, refreshToken, foundUser.User_id)
-
 		//return statusOK
 		c.JSON(http.StatusOK, foundUser)
-
 	}
 }
 
@@ -206,7 +200,7 @@ Buradaki HashPassword ve VerifyPassword fonksiyonları ise HTTP isteklerini işl
 */
 
 func HashPassword(password string) string{
-	bytes, err := bcrypt.GenerateFormPassword([]byte(password), 14)
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	if err != nil{
 		log.Panic(err)
 	}
