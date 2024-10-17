@@ -130,7 +130,7 @@ func UpdateMenu() gin.HandlerFunc{
 				updateObj = append(updateObj, bson.E{"name", menu.Name})
 			}
 			if menu.Category != ""{
-				updateObj = append(updateObj, bson.E{"name", menu.Category})
+				updateObj = append(updateObj, bson.E{"category", menu.Category})
 			}
 			menu.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 			updateObj = append(updateObj, bson.E{"updated_at", menu.Updated_at})
@@ -149,12 +149,14 @@ func UpdateMenu() gin.HandlerFunc{
 				&opt,
 			)
 			if err != nil {
-				msg := "Menu update failed"
+				msg := "Menu update failed: " + err.Error()
 				c.JSON(http.StatusInternalServerError, gin.H{"error":msg})
 
-				defer cancel()
-				c.JSON(http.StatusOK, result)
+				
+				
 			}
+			defer cancel()
+			c.JSON(http.StatusOK, result)
 		}
 	}
 }
