@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -54,7 +55,7 @@ func GetOrderItemsByOrder() gin.HandlerFunc{
 		allOrderItems, err := ItemsByOrder(orderId)
 
 		if err!=nil{
-			c.JSON(http.StatusInternalServerError, gin.H{"error":"error occured while listing order items by order ID"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error":err.Error()})
 			return
 		}
 		c.JSON(http.StatusOK, allOrderItems)
@@ -101,7 +102,6 @@ func ItemsByOrder(id string) (OrderItems []primitive.M, err error) {
 	}}}
 
 	projectStage := bson.D{{"$project", bson.D{
-		{"id", 0},
 		{"amount", "$food.price"},
 		{"total_count", 1},
 		{"food_name", "$food.name"},
@@ -125,12 +125,14 @@ func ItemsByOrder(id string) (OrderItems []primitive.M, err error) {
 	}}}
 
 	projectStage2 := bson.D{{"$project", bson.D{
-		{"id", 0},
 		{"payment_due", 1},
 		{"total_count", 1},
 		{"table_number", "$_id.table_number"},
 		{"order_items", 1},
+		{"_id", 0},
 	}}}
+
+	
 
 	// MongoDB Aggregate Pipeline işlemi
 	result, err := orderItemCollection.Aggregate(ctx, mongo.Pipeline{
@@ -144,14 +146,19 @@ func ItemsByOrder(id string) (OrderItems []primitive.M, err error) {
 		projectStage,
 		groupStage,
 		projectStage2,
+		
 	})
 	if err != nil {
-		return nil, err // panic yerine return kullanıyoruz
+		return nil, fmt.Errorf("aggregate error: %v", err)
 	}
 
 	if err = result.All(ctx, &OrderItems); err != nil {
-		return nil, err // panic yerine return kullanıyoruz
+		return nil, fmt.Errorf("result.All error: %v", err)
 	}
+
+	if len(OrderItems) == 0 {
+        return nil, fmt.Errorf("no order items found for order ID: %s", id)
+    }
 
 	return OrderItems, nil
 }
