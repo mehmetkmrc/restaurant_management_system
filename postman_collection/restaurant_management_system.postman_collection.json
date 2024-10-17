@@ -1,0 +1,809 @@
+{
+	"info": {
+		"_postman_id": "8a6a15e3-48ca-4f06-bde5-fb14b36af0d6",
+		"name": "restaurant_management_system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26057758",
+		"_collection_link": "https://planetary-zodiac-674449.postman.co/workspace/New-Team-Workspace~091d84db-596e-4d77-ba46-0a4cad763941/collection/26057758-8a6a15e3-48ca-4f06-bde5-fb14b36af0d6?action=share&source=collection_link&creator=26057758"
+	},
+	"item": [
+		{
+			"name": "AUTH SIGNUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"First_name\": \"Mehmet\",\r\n    \"Last_name\": \"Kömürcü\",\r\n    \"Password\": \"12345678\",\r\n    \"Email\": \"mehmet.komurcu@otovinn.com\",\r\n    \"Phone\": \"+905525518392\",\r\n    \"User_type\":\"ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/users/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTH LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Password\": \"12345678\",\r\n    \"Email\": \"mehmet.komurcu@otovinn.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD MENU",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"Slider menu\",\r\n    \"Category\": \"food\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/menus",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD FOOD ITEM",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"veghan-slider\",\r\n    \"Price\": 25,\r\n    \"Food_image\": \"https://www.pexels.com/photo/pile-of-fresh-durian-fruits-in-market-8018588/\",\r\n    \"Menu_id\": \"670f6b2927e9833010637286\",\r\n    \"Created_at\":\"2024-10-16T07:20:23Z\",\r\n    \"Updated_at\": \"2024-10-16T07:20:23Z\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/foods",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"foods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD TABLE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Number_of_guests\": 4,\r\n    \"Table_number\": 4,\r\n    \"Table_id\":\"670f7091c03b314a8288c989\",\r\n    \"Created_at\": \"2024-10-16T07:20:23Z\",\r\n    \"Updated_at\": \"2024-10-16T07:20:23Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/tables",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL TABLES",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/tables",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET TABLE BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/tables/670f9076a07f2f4b69f4becc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tables",
+						"670f9076a07f2f4b69f4becc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TABLE",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Number_of_guests\": 8,\r\n    \"Table_number\": 8,\r\n    \"Updated_at\": \"2024-10-16T10:07:50Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/tables/670f9076a07f2f4b69f4becc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tables",
+						"670f9076a07f2f4b69f4becc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL USERS(PROBLEM)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/users/670f693727e9833010637285",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"670f693727e9833010637285"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USER BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/users/670f693727e9833010637284",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"670f693727e9833010637284"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL FOODS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/foods",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"foods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET FOOD BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/foods/670f7091c03b314a8288c988",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"foods",
+						"670f7091c03b314a8288c988"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE FOOD ITEM",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"veghan-slider-DENEME\",\r\n    \"Price\": 45,\r\n    \"Food_image\":\"https://www.pexels.com/photo/red-tomato-fruit-in-close-up-photography-8618981/\",\r\n    \"Created_at\":\"0001-01-01T00:00:00Z\",\r\n    \"Menu_id\":\"670f6b2927e9833010637286\",\r\n    \"Updated_at\":\"0001-01-01T00:00:00Z\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/foods/670f7091c03b314a8288c988",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"foods",
+						"670f7091c03b314a8288c988"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD ORDER(PROBLEM)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Table_id\":\"670f9076a07f2f4b69f4becc\",\r\n    //\"Order_Date\": \"0001-01-01T00:00:00Z\",\r\n    \"Created_at\":\"0001-01-01T00:00:00Z\",\r\n    \"Updated_at\":\"0001-01-01T00:00:00Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE ORDER(PROBLEM)",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL ORDER(PROBLEM)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ORDER BY ID(PROBLEM)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD ORDER ITEM",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"Table_id\":\"670f9076a07f2f4b69f4becc\",\r\n    \"Order_items\":[\r\n        {\r\n            \"Order_Date\":\"0001-01-01T00:00:00Z\",\r\n            \"Created_at\":\"0001-01-01T00:00:00Z\",\r\n            \"Updated_at\": \"0001-01-01T00:00:00Z\",\r\n            \"Food_id\":\"670f7091c03b314a8288c988\",\r\n            \"Unit_price\":3.34,\r\n            \"Quantity\":\"M\"\r\n        }\r\n    ]\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/orderItems",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orderItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL ORDER ITEMS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/orderItems",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orderItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ORDER ITEM",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkxNDk2MjN9.m_nMxciCol1IB9RV7-m8s6DrwDmc2gSySvHdbU0nOVw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/orderItems/670fcb1b7e4048fbf051534f",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orderItems",
+						"670fcb1b7e4048fbf051534f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ORDER ITEM BY ORDER",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/orderItems-order/670fcb1b7e4048fbf051534e",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orderItems-order",
+						"670fcb1b7e4048fbf051534e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE ORDER ITEM(PROBLEM)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"unit_price\":20.50,\r\n    \"quantity\":\"S\",\r\n    \"food_id\": \"670f7091c03b314a8288c989\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/orderItems/670fcb1b7e4048fbf051534f",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orderItems",
+						"670fcb1b7e4048fbf051534f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL MENUS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/menus",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET MENU BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/menus/670f6b2927e9833010637286",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menus",
+						"670f6b2927e9833010637286"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE MENU",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"New Menu Item\",\r\n    \"category\": \"Appetizer--1\",\r\n    \"start_date\": \"2024-10-20T00:00:00Z\",\r\n    \"end_date\": \"2024-10-30T00:00:00Z\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/menus/670f6b2927e9833010637286",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"menus",
+						"670f6b2927e9833010637286"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD INVOICE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Order_id\":\"670fc4399c73ed8572087228\",\r\n    \"Payment_status\":\"PENDING\",\r\n    \"Payment_method\":\"CARD\",\r\n    \"Payment_due_date\": \"2024-10-30T00:00:00Z\",\r\n    \"Created_at\":\"2024-10-16T07:20:23Z\",\r\n    \"Updated_at\": \"2024-10-16T07:20:23Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/invoices",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL INVOICES",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/invoices",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET INVOICE BY ID(PROBLEM)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/invoices/6710f2fdaa2c01fd2c3093b3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"invoices",
+						"6710f2fdaa2c01fd2c3093b3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE INVOICE",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Im1laG1ldC5rb211cmN1QG90b3Zpbm4uY29tIiwiRmlyc3RfbmFtZSI6Ik1laG1ldCIsIkxhc3RfbmFtZSI6IkvDtm3DvHJjw7wiLCJVaWQiOiI2NzBmNjkzNzI3ZTk4MzMwMTA2MzcyODQiLCJleHAiOjE3MjkyMzI1Njl9.A7ZL_FM15Ev8AJGxNERKT9fthUlU4OkY7VLVUWYIAjM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Payment_method\":\"CASH\",\r\n    \"Payment_status\":\"\",\r\n    \"Updated_at\":\"2024-10-17T11:20:29.000+00:00\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/invoices/6710f2fdaa2c01fd2c3093b3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"invoices",
+						"6710f2fdaa2c01fd2c3093b3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
