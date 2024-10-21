@@ -116,7 +116,7 @@ func UpdateOrder() gin.HandlerFunc{
 		}
 
 		if order.Table_id != nil{
-			err := menuCollection.FindOne(ctx, bson.M{"table_id":order.Table_id}).Decode(&table)
+			err := tableCollection.FindOne(ctx, bson.M{"table_id":order.Table_id}).Decode(&table)
 			defer cancel()
 			if err!= nil{
 				msg := fmt.Sprintf("message:Menu was not found")
