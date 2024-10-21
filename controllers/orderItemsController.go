@@ -187,7 +187,7 @@ func UpdateOrderItem() gin.HandlerFunc{
 
 		var orderItem models.OrderItem
 
-		orderItemId := c.Param("order_item_id")
+		orderItemId := c.Param("orderItem_id")
 
 		filter := bson.M{"order_item_id":orderItemId}
 		var updateObj primitive.D
